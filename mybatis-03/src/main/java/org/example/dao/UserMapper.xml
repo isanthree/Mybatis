@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--namespace：绑定一个对应的 Dao/Mapper 接口-->
+<mapper namespace="org.example.dao.UserMapper">
+
+    <!--当实体类的变量名和数据库的字段名不一致时，通过取别名进行更正-->
+<!--    <select id="getUserList" resultType="user">-->
+<!--        select id, name, pwd as password from mybatis.user-->
+<!--    </select>-->
+
+    <!--结果集映射：将 UserMap 映射为 User-->
+    <resultMap id="UserMap" type="User">
+        <!--column：数据库中的字段，property：实体类中的属性-->
+        <!-- ResultMap 的优秀之处，完全可以不用显式地配置相同的字段和属性-->
+<!--        <result column="id" property="id"/>-->
+<!--        <result column="name" property="name"/>-->
+        <result column="pwd" property="password"/>
+    </resultMap>
+
+    <select id="getUserList" resultMap="UserMap">
+        select * from mybatis.user
+    </select>
+
+</mapper>
