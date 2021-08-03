@@ -1006,36 +1006,40 @@ SELECT|sys.sys_config:null
 BACKUP_ADMIN,BINLOG_ADMIN,CONNECTION_ADMIN,ENCRYPTION_KEY_ADMIN,GROUP_REPLICATION_ADMIN,PERSIST_RO_VARIABLES_ADMIN,REPLICATION_SLAVE_ADMIN,RESOURCE_GROUP_ADMIN,RESOURCE_GROUP_USER,ROLE_ADMIN,SET_USER_ID,SYSTEM_VARIABLES_ADMIN,XA_RECOVER_ADMIN!
 </ObjectGrants>
     </user>
-    <table id="313" parent="6" name="student"/>
-    <table id="314" parent="6" name="teacher"/>
-    <table id="315" parent="6" name="user"/>
-    <column id="316" parent="313" name="id">
+    <table id="313" parent="6" name="blog"/>
+    <table id="314" parent="6" name="student"/>
+    <table id="315" parent="6" name="teacher"/>
+    <table id="316" parent="6" name="user"/>
+    <column id="317" parent="313" name="id">
       <Position>1</Position>
-      <DataType>int(10)|0s</DataType>
+      <Comment>博客id</Comment>
+      <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="317" parent="313" name="name">
+    <column id="318" parent="313" name="title">
       <Position>2</Position>
-      <DataType>varchar(30)|0s</DataType>
+      <Comment>博客标题</Comment>
+      <DataType>varchar(100)|0s</DataType>
+      <NotNull>1</NotNull>
     </column>
-    <column id="318" parent="313" name="tid">
+    <column id="319" parent="313" name="author">
       <Position>3</Position>
-      <DataType>int(10)|0s</DataType>
+      <Comment>博客作者</Comment>
+      <DataType>varchar(30)|0s</DataType>
+      <NotNull>1</NotNull>
     </column>
-    <index id="319" parent="313" name="fktid">
-      <ColNames>tid</ColNames>
-      <Type>btree</Type>
-    </index>
-    <key id="320" parent="313" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>id</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <foreign-key id="321" parent="313" name="fktid">
-      <ColNames>tid</ColNames>
-      <RefTableName>teacher</RefTableName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
+    <column id="320" parent="313" name="create_time">
+      <Position>4</Position>
+      <Comment>创建时间</Comment>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="321" parent="313" name="views">
+      <Position>5</Position>
+      <Comment>浏览量</Comment>
+      <DataType>int(30)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
     <column id="322" parent="314" name="id">
       <Position>1</Position>
       <DataType>int(10)|0s</DataType>
@@ -1045,25 +1049,52 @@ BACKUP_ADMIN,BINLOG_ADMIN,CONNECTION_ADMIN,ENCRYPTION_KEY_ADMIN,GROUP_REPLICATIO
       <Position>2</Position>
       <DataType>varchar(30)|0s</DataType>
     </column>
-    <key id="324" parent="314" name="PRIMARY">
+    <column id="324" parent="314" name="tid">
+      <Position>3</Position>
+      <DataType>int(10)|0s</DataType>
+    </column>
+    <index id="325" parent="314" name="fktid">
+      <ColNames>tid</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="326" parent="314" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="325" parent="315" name="id">
+    <foreign-key id="327" parent="314" name="fktid">
+      <ColNames>tid</ColNames>
+      <RefTableName>teacher</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="328" parent="315" name="id">
+      <Position>1</Position>
+      <DataType>int(10)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="329" parent="315" name="name">
+      <Position>2</Position>
+      <DataType>varchar(30)|0s</DataType>
+    </column>
+    <key id="330" parent="315" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="331" parent="316" name="id">
       <Position>1</Position>
       <DataType>int(20)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="326" parent="315" name="name">
+    <column id="332" parent="316" name="name">
       <Position>2</Position>
       <DataType>varchar(30)|0s</DataType>
     </column>
-    <column id="327" parent="315" name="pwd">
+    <column id="333" parent="316" name="pwd">
       <Position>3</Position>
       <DataType>varchar(30)|0s</DataType>
     </column>
-    <key id="328" parent="315" name="PRIMARY">
+    <key id="334" parent="316" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
